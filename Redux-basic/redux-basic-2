@@ -1,0 +1,34 @@
+const redux = require("redux");
+
+
+const reducer = (state=0, action) => {
+	if(action.type === "increment"){
+		state++;
+	}
+	else if(action.type === "decrement"){
+		state--;
+	}
+	else if(action.type === "add"){
+		console.log("payload", action.payload)
+		 state += Number(action.payload)
+	}
+
+
+	return state;
+}
+
+const store = redux.createStore(reducer);
+
+
+const subscriber = () => {
+	const currentState = store.getState();
+	console.log("i am subcribed the store the current state are", currentState)
+}
+
+store.subscribe(subscriber);
+
+store.dispatch({type: "increment"})
+store.dispatch({type: "increment"})
+store.dispatch({type: "decrement"})
+store.dispatch({type: "add", payload: 2})
+store.dispatch({type: "add", payload: 6})
