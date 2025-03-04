@@ -1,7 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {counterActions} from "../store/store.js";
+import {useRef} from "react";
 
 export const Calculator = () => {
+    const addElementVal = useRef();
     const dispatch = useDispatch();
     const counter = useSelector(state => state.counter)
 
@@ -10,6 +12,9 @@ export const Calculator = () => {
     }
     const handleDecrement = () => {
         dispatch(counterActions.decrement())
+    }
+    const handleAddition = () => {
+        dispatch(counterActions.add(addElementVal.current.value))
     }
     return (
         <div className="container">
@@ -23,16 +28,18 @@ export const Calculator = () => {
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="col-2">
+                        <div className="col-1">
                             <button id="increment" className="btn btn-success btn-block" onClick={handleIncrement}>+</button>
                         </div>
-                        <div className="col-2">
+                        <div className="col-1">
                             <button id="decrement" className="btn btn-danger btn-block" onClick={handleDecrement}>−</button>
                         </div>
-                        <div className="col-2">
-                            <button id="add" className="btn btn-primary btn-block">Add</button>
+                        <div className="col-2 d-flex">
+                            <input type="text" id="value" className="form-control" ref={addElementVal}/>
+                            <button id="add" className="btn btn-primary btn-block" onClick={handleAddition}>Add</button>
                         </div>
-                        <div className="col-2">
+                        <div className="col-2 d-flex">
+                            <input type="text" id="value" className="form-control"/>
                             <button id="subtract" className="btn btn-warning btn-block">Subtract</button>
                         </div>
                         <div className="col-2 mt-2">
