@@ -15,6 +15,15 @@ export const Calculator = () => {
     }
     const handleAddition = () => {
         dispatch(counterActions.add(addElementVal.current.value))
+        addElementVal.current.value = ""
+    }
+    const handleSubtraction = () => {
+        dispatch(counterActions.subtract(addElementVal.current.value))
+        addElementVal.current.value = ""
+    }
+    const handleDivision = () => {
+        dispatch(counterActions.divide(addElementVal.current.value))
+        addElementVal.current.value = ""
     }
     return (
         <div className="container">
@@ -35,15 +44,14 @@ export const Calculator = () => {
                             <button id="decrement" className="btn btn-danger btn-block" onClick={handleDecrement}>−</button>
                         </div>
                         <div className="col-2 d-flex">
-                            <input type="text" id="value" className="form-control" ref={addElementVal}/>
+                            <input type="number" id="value" className="form-control" ref={addElementVal}/>
                             <button id="add" className="btn btn-primary btn-block" onClick={handleAddition}>Add</button>
                         </div>
-                        <div className="col-2 d-flex">
-                            <input type="text" id="value" className="form-control"/>
-                            <button id="subtract" className="btn btn-warning btn-block">Subtract</button>
+                        <div className="col-1">
+                            <button id="subtract" className="btn btn-warning btn-block" onClick={handleSubtraction}>Subtract</button>
                         </div>
-                        <div className="col-2 mt-2">
-                            <button id="divide" className="btn btn-info btn-block">Divide</button>
+                        <div className="col-1">
+                            <button id="divide" className="btn btn-info btn-block" onClick={handleDivision}>Divide</button>
                         </div>
                     </div>
                 </div>

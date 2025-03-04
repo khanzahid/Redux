@@ -13,6 +13,12 @@ const counterSlice = createSlice({
         },
         add: (state, action) => {
             return state + Number(action.payload)
+        },
+        subtract: (state, action) => {
+            return state - Number(action.payload)
+        },
+        divide: (state, action) => {
+            return state / Number(action.payload)
         }
     }
 })
