@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {counterActions} from "../store/store.js";
+import {counterActions} from "../store/counterSlice";
 import {useRef} from "react";
 
 export const Calculator = () => {
